@@ -2,6 +2,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
 
+## Configuration
+
+First you need create .env file in root and setup environments like a eg.:
+
+```
+APPLICATION_ID=
+SERVER_URL=
+USERNAME=
+PASSWORD=
+```
+
+now you need install dependencies, run this command:
+
+```
+yarn install
+```
+
+when install finish, you can run app with
+
+```
+yarn start
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
