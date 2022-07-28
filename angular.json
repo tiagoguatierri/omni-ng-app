@@ -15,8 +15,13 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "mergeRules": {
+                "externals": "replace"
+              }
+            },
             "outputPath": "dist/first-project",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -61,7 +66,10 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "first-project:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "first-project:build:production"

@@ -4,12 +4,8 @@
 
 export const environment = {
   production: false,
-  appName: 'Omni First App',
-  applicationId: '',
+  appName: 'First App',
   platform: 'web',
-  serverUrl: '',
-  username: '',
-  password: ''
 };
 
 /*

@@ -3,13 +3,16 @@ import { Observable, tap } from 'rxjs';
 import { ApiService, url } from '../core/services/api.service';
 
 import { getStorageObject, setStorageObject } from '../core/helpers';
-import { environment } from '../../environments/environment';
+
+declare const process: any
+
+const APPLICATION_ID = process.env['APPLICATION_ID']
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly parseStorageUserKey = `Parse/${environment.applicationId}/currentUser`;
+  private readonly parseStorageUserKey = `Parse/${APPLICATION_ID}/currentUser`;
 
   constructor(private api: ApiService) {}
 

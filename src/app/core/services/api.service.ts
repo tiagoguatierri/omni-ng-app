@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { map, Observable } from 'rxjs';
-
 import { environment } from '../../../environments/environment';
+
+declare const process: any;
+const APPLICATION_ID = process.env['APPLICATION_ID'];
+const SERVER_URL = process.env['SERVER_URL'];
 
 export type Result<T> = {
   results: T[];
@@ -15,7 +18,7 @@ export type QueryParams = {
 };
 
 export const url = (path?: string) =>
-  path ? `${environment.serverUrl}/${path}` : environment.serverUrl;
+  path ? `${SERVER_URL}/${path}` : SERVER_URL;
 
 export const resolvePath = (className: string, params?: any) => {
   const path = url(`classes/${className}`);
@@ -30,11 +33,11 @@ export const resolvePath = (className: string, params?: any) => {
   providedIn: 'root',
 })
 export class ApiService {
-  private readonly parseStorageUserKey = `Parse/${environment.applicationId}/currentUser`;
+  private readonly parseStorageUserKey = `Parse/${APPLICATION_ID}/currentUser`;
 
   private readonly defaultHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
-    'X-Parse-Application-Id': environment.applicationId,
+    'X-Parse-Application-Id': APPLICATION_ID,
     'x-omnichat-platform': environment.platform,
   });
 

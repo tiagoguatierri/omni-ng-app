@@ -16,10 +16,12 @@ import { MenuService } from './core/services/menu.service';
 
 import { AppComponent } from './app.component';
 
-import { environment } from '../environments/environment';
+declare const process: any;
+const USERNAME = process.env['USERNAME'];
+const PASSWORD = process.env['PASSWORD'];
 
 function authLogin(auth: AuthService): () => Observable<any> {
-  return () => auth.login(environment.username, environment.password);
+  return () => auth.login(USERNAME, PASSWORD);
 }
 
 function menuLoader(
