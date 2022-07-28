@@ -1,0 +1,77 @@
+<div class="d-flex">
+  <div class="ms-auto">
+    <a mat-flat-button color="primary" routerLink="/customer/add">Cadastrar</a>
+  </div>
+</div>
+
+<mat-card class="customer-card mt-4">
+  <div class="overlay" *ngIf="loading">
+    <mat-spinner color="accent" diameter="64" strokeWidth="4"></mat-spinner>
+  </div>
+
+  <div class="table-content">
+    <table
+      mat-table
+      [dataSource]="customers"
+      *ngIf="customers$ | async as customers"
+    >
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef>Nome completo</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [innerHTML]="getValue('fullName', element) | safe: 'html'"
+        ></td>
+      </ng-container>
+
+      <!-- PhoneNumberColumn -->
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef>Telefone</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [innerHTML]="getFormatedPhoneNumber(element) | safe: 'html'"
+        ></td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [innerHTML]="getValue('email', element) | safe: 'html'"
+        ></td>
+      </ng-container>
+
+      <!-- ACtions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <a
+            mat-icon-button
+            [routerLink]="['../edit', element.objectId]"
+            aria-label="Botaão para editar o cliente"
+          >
+            <mat-icon>edit</mat-icon>
+          </a>
+
+          <button
+            mat-icon-button
+            aria-label="Botaão para deletar o cliente"
+            (click)="deleteCustomer(element)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</mat-card>

@@ -1,0 +1,9 @@
+table {
+  width: 100%;
+}
+
+.table-content {
+  min-height: 100px;
+  height: calc(100vh - 210px);
+  overflow-y: auto;
+}

@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "title": "Listar clientes",
+      "route": "customer/list",
+      "icon": "person_search"
+    },
+    {
+      "title": "Cadastrar cliente",
+      "route": "customer/add",
+      "icon": "person_add"
+    }
+  ]
+}
