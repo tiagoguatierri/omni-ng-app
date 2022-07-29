@@ -13,7 +13,7 @@ USERNAME=
 PASSWORD=
 ```
 
-# Option 1:
+### Option 1:
 now you need install dependencies, run this command:
 
 ```
@@ -26,7 +26,7 @@ when install finish, you can run app with
 yarn start
 ```
 
-# Option 2:
+### Option 2:
 you dont need install anything in your machine, you can run with docker. Run the command and enjoy.
 
 ```
