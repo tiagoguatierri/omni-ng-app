@@ -4,9 +4,7 @@ import { ApiService, url } from '../core/services/api.service';
 
 import { getStorageObject, setStorageObject } from '../core/helpers';
 
-declare const process: any
-
-const APPLICATION_ID = process.env['APPLICATION_ID']
+const APPLICATION_ID = process.env['APPLICATION_ID']!
 
 @Injectable({
   providedIn: 'root',

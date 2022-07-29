@@ -4,9 +4,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
-declare const process: any;
-const APPLICATION_ID = process.env['APPLICATION_ID'];
-const SERVER_URL = process.env['SERVER_URL'];
+const APPLICATION_ID = process.env['APPLICATION_ID']!;
+const SERVER_URL = process.env['SERVER_URL']!;
 
 export type Result<T> = {
   results: T[];

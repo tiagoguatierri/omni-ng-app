@@ -16,9 +16,8 @@ import { MenuService } from './core/services/menu.service';
 
 import { AppComponent } from './app.component';
 
-declare const process: any;
-const USERNAME = process.env['USERNAME'];
-const PASSWORD = process.env['PASSWORD'];
+const USERNAME = process.env['USERNAME']!;
+const PASSWORD = process.env['PASSWORD']!;
 
 function authLogin(auth: AuthService): () => Observable<any> {
   return () => auth.login(USERNAME, PASSWORD);
