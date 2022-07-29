@@ -30,7 +30,7 @@ yarn start
 you dont need install anything in your machine, you can run with docker. Run the command and enjoy.
 
 ```
-docker compose up -dependencies
+docker compose up -d
 ```
 
 when finish, navigate to `http://localhost/`
