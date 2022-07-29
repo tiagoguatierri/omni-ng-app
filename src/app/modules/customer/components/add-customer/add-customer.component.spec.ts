@@ -1,42 +1,34 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
-
-import { ApiService } from '../../../../core/services/api.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCustomerComponent } from './add-customer.component';
+import { ApiService } from '../../../../core/services/api.service';
+
+import { render, screen } from '@testing-library/angular';
+
+import userEvent from '@testing-library/user-event';
+
+const getSubmitButton = () => screen.getByTestId('submit') as HTMLButtonElement;
+const getDeleteButton = () => screen.getByTestId('delete') as HTMLButtonElement;
+const getInputName = () => screen.getByTestId('inputName') as HTMLInputElement;
 
 describe('AddCustomerComponent', () => {
-  let component: AddCustomerComponent;
-  let fixture: ComponentFixture<AddCustomerComponent>;
-  let httpMock: HttpTestingController;
-  let router: Router;
-  let service: ApiService;
+  const apiServiceSpy = jasmine.createSpyObj<ApiService>('ApiService', [
+    'post',
+    'put',
+    'delete',
+    'get',
+  ]);
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [AddCustomerComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
-      providers: [ApiService],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(AddCustomerComponent);
-    component = fixture.componentInstance;
-    httpMock = TestBed.inject(HttpTestingController);
-    router = TestBed.inject(Router);
-    service = TestBed.inject(ApiService);
-
-    fixture.detectChanges();
+    await render(AddCustomerComponent, {
+      providers: [{ provide: ApiService, useValue: apiServiceSpy }],
+      imports: [FormsModule, ReactiveFormsModule],
+    });
   });
 
-  afterEach(() => {
-    httpMock.verify();
-  });
+  it('when user submit form', () => {
+    userEvent.type(getInputName(), 'any_text');
+    userEvent.click(getSubmitButton());
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    expect(apiServiceSpy.post).toHaveBeenCalledTimes(1)
+  })
 });

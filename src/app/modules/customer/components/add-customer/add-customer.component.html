@@ -22,6 +22,7 @@
         <mat-label>Nome</mat-label>
         <input
           matInput
+          data-testid="inputName"
           placeholder="Nome"
           formControlName="fullName"
           required
@@ -99,6 +100,7 @@
     <mat-card-actions class="p-0 m-0 pe-2" align="end">
       <button
         mat-flat-button
+        data-testid="delete"
         type="button"
         class="me-2"
         color="warn"
@@ -107,7 +109,9 @@
       >
         Excluir
       </button>
-      <button mat-flat-button color="accent">Enviar</button>
+      <button mat-flat-button data-testid="submit" color="accent">
+        Enviar
+      </button>
     </mat-card-actions>
   </form>
 </mat-card>

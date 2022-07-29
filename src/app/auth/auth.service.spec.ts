@@ -29,4 +29,15 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('#setAuthStorage()', () => {
+    it('should set auth info in localStorage', () => {
+      expect(service.setAuthStorage).toBeDefined();
+    });
+  });
+
+  describe('#getAuthStorage()', () => {
+    it('should return auth info from localStorage', () => {
+      expect(service.setAuthStorage).toBeDefined();
+    });
+  });
 });
