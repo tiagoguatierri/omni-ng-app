@@ -100,12 +100,12 @@
     <mat-card-actions class="p-0 m-0 pe-2" align="end">
       <button
         mat-flat-button
-        data-testid="delete"
+        id="deleteButton"
         type="button"
         class="me-2"
         color="warn"
         (click)="deleteCustomer()"
-        *ngIf="customerId"
+        [disabled]="!customerId"
       >
         Excluir
       </button>
